@@ -1,17 +1,6 @@
 "use strict";
 
-/*
-
-var blur= new Blur({
-    radius: 20,
-    gaussian : true,
-});
-blur.init();
-
-var img =  [ a  Image or Canvas ]
-var blurImg = blur.blurRGBA(img, null, true);
-
-*/
+const SimpleBlur = {};
 
 (function(exports) {
 
@@ -480,4 +469,14 @@ var blurImg = blur.blurRGBA(img, null, true);
         Blur.prototype[p] = proto[p];
     }
 
-}(window));
+}(SimpleBlur));
+
+export function blurImg(img, radius) {
+    var blur= new SimpleBlur.Blur({
+        radius: radius || 20,
+        gaussian: false,
+    });
+    blur.init();
+
+    return blur.blurRGBA(img, null, true);
+}
